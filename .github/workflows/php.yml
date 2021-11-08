@@ -25,7 +25,7 @@ jobs:
       - name: Setup composer
         uses: php-actions/composer@v6
 
-      - name: Composer install
+      - name: Build protobuf and gRPC files
         run: |
           composer install
           make protobuf
