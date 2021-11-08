@@ -34,6 +34,7 @@ jobs:
         if: github.event_name == 'push'
         uses: EndBug/add-and-commit@v5.1.0
         with:
+          add: 'src'
           author_name: Leon Gungadin Mogensen
           author_email: leon@toitware.com
           message: built PHP source files
