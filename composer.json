@@ -1,7 +1,14 @@
 {
+    "name": "toit/api",
+    "type": "library",
+    "description":"PHP Client for the Toit GRPC API",
+    "keywords": ["toit", "grpc"],
+    "homepage": "https://toit.io",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "Toit\\": "src/Toit",
+            "GPBMetadata\\Toit\\": "src/GPBMetadata/Toit"
         }
     },
     "require": {
