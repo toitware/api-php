@@ -1,0 +1,42 @@
+name: PHP
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  release:
+    types: [published]
+
+jobs:
+  php:
+    name: Build PHP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup protoc
+        uses: arduino/setup-protoc@v1.1.0
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+      - name: Setup composer
+        uses: php-actions/composer@v6
+
+      - name: Composer install
+        run: |
+          composer install
+          make protobuf
+
+      - name: Add & Commit
+        if: github.event_name == 'push'
+        uses: EndBug/add-and-commit@v5.1.0
+        with:
+          author_name: Leon Gungadin Mogensen
+          author_email: leon@toitware.com
+          message: built PHP source files
+          branch: master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
