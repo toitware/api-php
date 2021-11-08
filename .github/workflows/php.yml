@@ -37,6 +37,6 @@ jobs:
           author_name: Leon Gungadin Mogensen
           author_email: leon@toitware.com
           message: built PHP source files
-          branch: master
+          branch: main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
