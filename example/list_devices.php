@@ -18,12 +18,10 @@ $client = new Toit\Api\DeviceServiceClient('api.toit.io:443', [
 
 list($resp, $status) = $client->ListDevices(new Toit\Api\ListDevicesRequest())->wait();
 
-// print_r($resp);
 if ($status->code != Grpc\STATUS_OK) {
     print "failed to fetch devices: " . $status->code . "\n";
     exit(1);
 }
-// exit(0);
 foreach ($resp->getDevices() as $device) {
     print $device->GetConfig()->GetName() . "\n";
 }
